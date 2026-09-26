@@ -24,6 +24,13 @@ Each has Beginner, Advanced and Expert tiers, plus an adaptive Daily Training ci
 
 Xcode 26+ (tested with Xcode 27). Open `GetSmarter.xcodeproj`, run the `GetSmarter` scheme. See [CLAUDE.md](CLAUDE.md) for test and lint commands.
 
+## Release
+
+- `swift scripts/make-icon.swift`: regenerate the app icon
+- `scripts/screenshots.sh`: capture App Store screenshots into `./screenshots`
+- [docs/release/](docs/release/): metadata, review notes, Game Center IDs, and the App Store Connect checklist
+- Website (privacy/support): https://ajaymathur.github.io/memorise-get-smatter/
+
 ## License
 
 All rights reserved. See [LICENSE](LICENSE).
