@@ -9,6 +9,9 @@ enum Effect: Sendable, Equatable {
     enum Haptic: Sendable, Equatable { case success, error, selection }
 }
 
+/// How a board sends actions to its engine.
+typealias Sender<E> = (_ action: (inout E) -> [Effect]) -> Void
+
 struct Outcome: Sendable, Equatable {
     var score: Int
     var accuracy: Double
