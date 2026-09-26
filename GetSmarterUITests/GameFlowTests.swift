@@ -40,3 +40,16 @@ extension GameFlowTests {
         XCTAssertTrue(app.buttons["Star"].isEnabled)
     }
 }
+
+extension GameFlowTests {
+    @MainActor
+    func testNBackShowsMatchButton() {
+        let app = launch()
+        open("N-Back", in: app)
+        let button = app.buttons["Position match"]
+        XCTAssertTrue(button.waitForExistence(timeout: 3))
+        XCTAssertTrue(app.staticTexts["1/21"].waitForExistence(timeout: 3))
+        XCTAssertTrue(button.isEnabled)
+        XCTAssertFalse(app.buttons["Sound match"].exists)
+    }
+}
