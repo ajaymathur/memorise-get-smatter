@@ -6,6 +6,7 @@ struct SettingsView: View {
     @AppStorage(SettingsKey.hapticsOn) private var hapticsOn = true
     @AppStorage(SettingsKey.relaxedTiming) private var relaxedTiming = false
     @AppStorage(SettingsKey.unlockAll) private var unlockAll = false
+    @AppStorage(SettingsKey.shareScores) private var shareScores = ShareChoice.notAsked.rawValue
     @Environment(\.modelContext) private var context
     @State private var confirmReset = false
 
@@ -22,6 +23,17 @@ struct SettingsView: View {
                 Text("Gameplay")
             } footer: {
                 Text("Relaxed timing gives 50% more time. Relaxed games are not posted to leaderboards.")
+            }
+            Section {
+                Toggle(
+                    "Share scores on leaderboards",
+                    isOn: Binding(
+                        get: { shareScores == ShareChoice.share.rawValue },
+                        set: { shareScores = ($0 ? ShareChoice.share : .keepPrivate).rawValue }))
+            } header: {
+                Text("Game Center")
+            } footer: {
+                Text("When on, your best ranked scores and achievements are posted to Game Center under your nickname.")
             }
             Section {
                 Button("Reset progress", role: .destructive) { confirmReset = true }

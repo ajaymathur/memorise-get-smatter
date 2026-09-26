@@ -96,6 +96,7 @@ struct DailyTrainingView: View {
         record.circuitComplete = index == games.count - 1
         context.insert(record)
         try? context.save()
+        GameCenterService.shared.sync(context)
         if index + 1 < games.count {
             phase = .stage(index + 1)
         } else {
