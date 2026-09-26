@@ -8,6 +8,7 @@ struct GameScreen: View {
         switch game {
         case .pairMatch: PairMatchScreen(tier: tier)
         case .sequenceEcho: SequenceEchoScreen(tier: tier)
+        case .nBack: NBackScreen(tier: tier)
         default: ContentUnavailableView("Coming soon", systemImage: game.symbol)
         }
     }
