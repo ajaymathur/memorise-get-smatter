@@ -29,3 +29,14 @@ final class GameFlowTests: XCTestCase {
         XCTAssertTrue(app.buttons["Row 1, column 1, face down"].waitForExistence(timeout: 2))
     }
 }
+
+extension GameFlowTests {
+    @MainActor
+    func testSequenceEchoAcceptsInputAfterPlayback() {
+        let app = launch()
+        open("Sequence Echo", in: app)
+        XCTAssertTrue(app.staticTexts["Watch…"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.staticTexts["Your turn"].waitForExistence(timeout: 6))
+        XCTAssertTrue(app.buttons["Star"].isEnabled)
+    }
+}
