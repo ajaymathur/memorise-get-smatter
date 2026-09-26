@@ -8,6 +8,11 @@ struct NBackScreen: View {
             var rng = SeededRNG()
             let config = NBackEngine.Config.tier(tier)
             return NBackEngine(config: mode == .relaxed ? config.relaxed() : config, rng: &rng)
+        } practice: {
+            var rng = SeededRNG()
+            var config = NBackEngine.Config.tier(tier)
+            config.trials = config.n + 6
+            return NBackEngine(config: config, rng: &rng)
         } board: { engine, send in
             NBackBoard(engine: engine) { m in send { $0.respond(m) } }
         }

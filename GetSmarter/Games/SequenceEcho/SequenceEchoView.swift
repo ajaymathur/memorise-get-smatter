@@ -7,6 +7,12 @@ struct SequenceEchoScreen: View {
         GameHostView(game: .sequenceEcho, tier: tier) { mode in
             let config = SequenceEchoEngine.Config.tier(tier)
             return SequenceEchoEngine(config: mode == .relaxed ? config.relaxed() : config, rng: SeededRNG())
+        } practice: {
+            var config = SequenceEchoEngine.Config.tier(tier)
+            config.startSpan = 2
+            config.singleTrial = true
+            config.maxSpan = 2
+            return SequenceEchoEngine(config: config, rng: SeededRNG())
         } board: { engine, send in
             SequenceEchoBoard(engine: engine) { i in send { $0.tap(i) } }
         }

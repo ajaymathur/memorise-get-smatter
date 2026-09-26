@@ -8,6 +8,9 @@ struct PairMatchScreen: View {
             var rng = SeededRNG()
             let config = PairMatchEngine.Config.tier(tier)
             return PairMatchEngine(config: mode == .relaxed ? config.relaxed() : config, rng: &rng)
+        } practice: {
+            var rng = SeededRNG()
+            return PairMatchEngine(config: .training(pairs: 3), rng: &rng)
         } board: { engine, send in
             PairMatchBoard(engine: engine) { i in send { $0.tap(i) } }
         }

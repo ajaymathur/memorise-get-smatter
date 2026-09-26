@@ -7,6 +7,8 @@ struct WordRecallScreen: View {
         GameHostView(game: .wordRecall, tier: tier) { mode in
             let config = WordRecallEngine.Config.tier(tier)
             return WordRecallEngine(config: mode == .relaxed ? config.relaxed() : config, rng: SeededRNG())
+        } practice: {
+            WordRecallEngine(config: .training(length: 4), rng: SeededRNG())
         } board: { engine, send in
             WordRecallBoard(engine: engine, send: send)
         }

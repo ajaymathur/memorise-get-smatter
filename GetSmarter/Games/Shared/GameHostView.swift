@@ -91,9 +91,11 @@ struct GameHostView<Engine: GameEngine, Board: View>: View {
     let game: GameKind
     let tier: Tier
     let make: (SessionMode) -> Engine
+    /// Tiny unscored round used as the interactive tutorial (REQ-GM-08).
+    let practice: () -> Engine
     @ViewBuilder let board: (Engine, @escaping Send) -> Board
 
-    private enum Phase: Equatable { case intro, playing, result(Outcome, best: Bool) }
+    private enum Phase: Equatable { case intro, practicing, playing, result(Outcome, best: Bool) }
 
     @State private var engine: Engine?
     @State private var phase = Phase.intro
@@ -110,7 +112,19 @@ struct GameHostView<Engine: GameEngine, Board: View>: View {
         Group {
             switch phase {
             case .intro:
-                GameIntroView(game: game, tier: tier, relaxed: relaxedTiming, start: start)
+                GameIntroView(
+                    game: game, tier: tier, relaxed: relaxedTiming,
+                    tutorialSeen: UserDefaults.standard.bool(forKey: SettingsKey.tutorialSeen(game)),
+                    practice: startPractice, start: start)
+            case .practicing:
+                if let binding = Binding($engine) {
+                    GamePlayView(engine: binding, onFinish: { _ in finishPractice() }, board: board)
+                        .safeAreaInset(edge: .top) {
+                            Text("Practice round: not scored").font(.footnote.weight(.semibold)).foregroundStyle(
+                                game.color)
+                        }
+                        .id(run)
+                }
             case .playing:
                 if let binding = Binding($engine) {
                     GamePlayView(engine: binding, onFinish: finish, board: board).id(run)
@@ -134,6 +148,17 @@ struct GameHostView<Engine: GameEngine, Board: View>: View {
         } message: {
             Text("Other players will see your Game Center nickname and best scores. You can change this in Settings.")
         }
+    }
+
+    private func startPractice() {
+        engine = practice()
+        run += 1
+        phase = .practicing
+    }
+
+    private func finishPractice() {
+        UserDefaults.standard.set(true, forKey: SettingsKey.tutorialSeen(game))
+        phase = .intro
     }
 
     private func start() {
