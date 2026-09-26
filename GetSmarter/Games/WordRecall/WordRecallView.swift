@@ -15,7 +15,7 @@ struct WordRecallScreen: View {
 
 struct WordRecallBoard: View {
     let engine: WordRecallEngine
-    let send: GameHostView<WordRecallEngine, WordRecallBoard>.Send
+    let send: Sender<WordRecallEngine>
 
     private var color: Color { GameKind.wordRecall.color }
 

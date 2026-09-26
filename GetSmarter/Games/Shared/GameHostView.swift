@@ -1,82 +1,63 @@
 import SwiftData
 import SwiftUI
 
-/// Shared shell for every ranked game: intro → play (clock, pause) → result + save.
-struct GameHostView<Engine: GameEngine, Board: View>: View {
-    typealias Send = (_ action: (inout Engine) -> [Effect]) -> Void
+/// Runs one engine: game clock, pause overlay, effects. Calls `onFinish` once when the engine produces an outcome.
+struct GamePlayView<Engine: GameEngine, Board: View>: View {
+    typealias Send = Sender<Engine>
 
-    let game: GameKind
-    let tier: Tier
-    let make: (SessionMode) -> Engine
+    @Binding var engine: Engine
+    let onFinish: (Outcome) -> Void
     @ViewBuilder let board: (Engine, @escaping Send) -> Board
 
-    private enum Phase: Equatable { case intro, playing, paused, result(Outcome, best: Bool) }
-
-    @State private var engine: Engine?
-    @State private var phase = Phase.intro
-    @State private var mode = SessionMode.ranked
+    @State private var paused = false
+    @State private var finished = false
     @State private var haptic: (kind: Effect.Haptic, count: Int) = (.selection, 0)
-    @AppStorage(SettingsKey.relaxedTiming) private var relaxedTiming = false
     @AppStorage(SettingsKey.hapticsOn) private var hapticsOn = true
     @Environment(\.scenePhase) private var scenePhase
-    @Environment(\.modelContext) private var context
-    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
-        content
-            .navigationTitle(Text(game.title))
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                if phase == .playing {
-                    Button("Pause", systemImage: "pause.fill") { phase = .paused }
+        Group {
+            if paused {
+                ContentUnavailableView {
+                    Label("Paused", systemImage: "pause.circle")
+                } description: {
+                    Text("The board is hidden while paused.")
+                } actions: {
+                    Button("Resume") {
+                        engine.resumeFromPause()
+                        paused = false
+                    }
+                    .buttonStyle(.borderedProminent)
                 }
+            } else {
+                board(engine, send)
             }
-            .task(id: phase == .playing) { await runClock() }
-            .onChange(of: scenePhase) { if scenePhase != .active && phase == .playing { phase = .paused } }
-            .sensoryFeedback(trigger: haptic.count) { _, _ in
-                guard hapticsOn else { return nil }
-                switch haptic.kind {
-                case .success: return .success
-                case .error: return .error
-                case .selection: return .selection
-                }
+        }
+        .toolbar {
+            if !paused {
+                Button("Pause", systemImage: "pause.fill") { paused = true }
             }
-    }
-
-    @ViewBuilder private var content: some View {
-        switch phase {
-        case .intro:
-            GameIntroView(game: game, tier: tier, relaxed: relaxedTiming, start: start)
-        case .playing:
-            if let engine { board(engine, send) }
-        case .paused:
-            PausedView {
-                engine?.resumeFromPause()
-                phase = .playing
-            }
-        case .result(let outcome, let best):
-            ResultView(game: game, tier: tier, mode: mode, outcome: outcome, isPersonalBest: best, playAgain: start) {
-                dismiss()
+        }
+        .task(id: paused) { await runClock() }
+        .onChange(of: scenePhase) { if scenePhase != .active { paused = true } }
+        .sensoryFeedback(trigger: haptic.count) { _, _ in
+            guard hapticsOn else { return nil }
+            switch haptic.kind {
+            case .success: return .success
+            case .error: return .error
+            case .selection: return .selection
             }
         }
     }
 
-    private func start() {
-        mode = relaxedTiming ? .relaxed : .ranked
-        engine = make(mode)
-        phase = .playing
-    }
-
     private func send(_ action: (inout Engine) -> [Effect]) {
-        guard phase == .playing, var e = engine else { return }
-        let effects = action(&e)
-        engine = e
-        perform(effects)
+        guard !paused, !finished else { return }
+        perform(action(&engine))
     }
 
-    /// Advances game time only while playing, so paused time never counts (REQ-GM-05).
+    /// Advances game time only while running, so paused time never counts (REQ-GM-05).
     private func runClock() async {
-        guard phase == .playing else { return }
+        guard !paused else { return }
         let clock = ContinuousClock()
         var last = clock.now
         while !Task.isCancelled {
@@ -96,7 +77,57 @@ struct GameHostView<Engine: GameEngine, Board: View>: View {
             case .announce(let text): AccessibilityNotification.Announcement(text).post()
             }
         }
-        if let outcome = engine?.outcome, phase == .playing { finish(outcome) }
+        if let outcome = engine.outcome, !finished {
+            finished = true
+            onFinish(outcome)
+        }
+    }
+}
+
+/// Ranked game shell: intro → play → result + save.
+struct GameHostView<Engine: GameEngine, Board: View>: View {
+    typealias Send = Sender<Engine>
+
+    let game: GameKind
+    let tier: Tier
+    let make: (SessionMode) -> Engine
+    @ViewBuilder let board: (Engine, @escaping Send) -> Board
+
+    private enum Phase: Equatable { case intro, playing, result(Outcome, best: Bool) }
+
+    @State private var engine: Engine?
+    @State private var phase = Phase.intro
+    @State private var mode = SessionMode.ranked
+    @State private var run = 0
+    @AppStorage(SettingsKey.relaxedTiming) private var relaxedTiming = false
+    @Environment(\.modelContext) private var context
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        Group {
+            switch phase {
+            case .intro:
+                GameIntroView(game: game, tier: tier, relaxed: relaxedTiming, start: start)
+            case .playing:
+                if let binding = Binding($engine) {
+                    GamePlayView(engine: binding, onFinish: finish, board: board).id(run)
+                }
+            case .result(let outcome, let best):
+                ResultView(game: game, tier: tier, mode: mode, outcome: outcome, isPersonalBest: best, playAgain: start)
+                {
+                    dismiss()
+                }
+            }
+        }
+        .navigationTitle(Text(game.title))
+        .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func start() {
+        mode = relaxedTiming ? .relaxed : .ranked
+        engine = make(mode)
+        run += 1
+        phase = .playing
     }
 
     private func finish(_ outcome: Outcome) {
@@ -113,19 +144,5 @@ struct GameHostView<Engine: GameEngine, Board: View>: View {
         try? context.save()
         if best { SoundPlayer.shared.play(.personalBest) }
         phase = .result(outcome, best: best)
-    }
-}
-
-private struct PausedView: View {
-    let resume: () -> Void
-
-    var body: some View {
-        ContentUnavailableView {
-            Label("Paused", systemImage: "pause.circle")
-        } description: {
-            Text("The board is hidden while paused.")
-        } actions: {
-            Button("Resume", action: resume).buttonStyle(.borderedProminent)
-        }
     }
 }
