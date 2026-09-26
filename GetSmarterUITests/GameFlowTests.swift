@@ -53,3 +53,17 @@ extension GameFlowTests {
         XCTAssertFalse(app.buttons["Sound match"].exists)
     }
 }
+
+extension GameFlowTests {
+    @MainActor
+    func testWordRecallStudyThenTest() {
+        let app = launch()
+        open("Word Recall", in: app)
+        XCTAssertTrue(app.staticTexts["Word 1 of 8"].waitForExistence(timeout: 3))
+        // 8 words × 2.4 s ≈ 19 s of study.
+        let done = app.buttons["Done (0 selected)"]
+        XCTAssertTrue(done.waitForExistence(timeout: 25))
+        done.tap()
+        XCTAssertTrue(app.staticTexts["Score"].waitForExistence(timeout: 3))
+    }
+}
