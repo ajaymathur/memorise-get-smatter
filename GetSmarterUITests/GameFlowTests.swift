@@ -4,7 +4,7 @@ final class GameFlowTests: XCTestCase {
     @MainActor
     func launch() -> XCUIApplication {
         let app = XCUIApplication()
-        app.launchArguments = ["-uitest"]
+        app.launchArguments = ["-uitest", "-onboarded", "YES"]
         app.launch()
         return app
     }
@@ -13,7 +13,7 @@ final class GameFlowTests: XCTestCase {
     func open(_ game: String, in app: XCUIApplication) {
         app.staticTexts[game].tap()
         app.buttons["Beginner"].firstMatch.tap()
-        app.buttons["Start"].tap()
+        app.buttons["Skip to game"].tap()
     }
 
     @MainActor
@@ -76,5 +76,22 @@ extension GameFlowTests {
         app.buttons["Start training"].tap()
         XCTAssertTrue(app.staticTexts["Level 4"].waitForExistence(timeout: 3))
         XCTAssertTrue(app.buttons["Pause"].exists)
+    }
+}
+
+extension GameFlowTests {
+    @MainActor
+    func testPracticeRoundReturnsToIntro() {
+        let app = launch()
+        app.staticTexts["Sequence Echo"].tap()
+        app.buttons["Beginner"].firstMatch.tap()
+        app.buttons["Try a practice round"].tap()
+        XCTAssertTrue(app.staticTexts["Practice round: not scored"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.staticTexts["Your turn"].waitForExistence(timeout: 6))
+        // Wrong answer on purpose: any tile that is not first ends the one-trial practice.
+        for name in ["Star", "Heart", "Moon", "Sun"] where app.staticTexts["Your turn"].exists {
+            app.buttons[name].tap()
+        }
+        XCTAssertTrue(app.buttons["Start"].waitForExistence(timeout: 5))
     }
 }
