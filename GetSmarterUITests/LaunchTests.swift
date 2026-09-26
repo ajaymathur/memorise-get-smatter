@@ -2,9 +2,12 @@ import XCTest
 
 final class LaunchTests: XCTestCase {
     @MainActor
-    func testLaunches() {
+    func testMenuListsAllGames() {
         let app = XCUIApplication()
+        app.launchArguments = ["-uitest"]
         app.launch()
-        XCTAssertTrue(app.staticTexts["Get Smarter"].waitForExistence(timeout: 5))
+        for title in ["Pair Match", "Sequence Echo", "N-Back", "Word Recall"] {
+            XCTAssertTrue(app.staticTexts[title].waitForExistence(timeout: 5), title)
+        }
     }
 }
