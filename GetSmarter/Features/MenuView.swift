@@ -34,7 +34,7 @@ struct MenuView: View {
             .navigationDestination(for: Route.self) { route in
                 switch route {
                 case .game(let game): GameDetailView(game: game)
-                case .play(let game, let tier): Text("\(game.title) · \(tier.title)")
+                case .play(let game, let tier): GameScreen(game: game, tier: tier)
                 case .settings: SettingsView()
                 }
             }
