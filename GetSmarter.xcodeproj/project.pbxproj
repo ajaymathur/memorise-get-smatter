@@ -1,0 +1,496 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		A1000000000000000000C001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A10000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1000000000000000000A001;
+			remoteInfo = GetSmarter;
+		};
+		A1000000000000000000C002 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A10000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1000000000000000000A001;
+			remoteInfo = GetSmarter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A1000000000000000000F001 /* GetSmarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetSmarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1000000000000000000F002 /* GetSmarterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetSmarterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1000000000000000000F003 /* GetSmarterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetSmarterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A1000000000000000000D001 /* GetSmarter */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = GetSmarter;
+			sourceTree = "<group>";
+		};
+		A1000000000000000000D002 /* GetSmarterTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = GetSmarterTests;
+			sourceTree = "<group>";
+		};
+		A1000000000000000000D003 /* GetSmarterUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = GetSmarterUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1000000000000000000B011 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1000000000000000000B021 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1000000000000000000B031 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A10000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				A1000000000000000000D001 /* GetSmarter */,
+				A1000000000000000000D002 /* GetSmarterTests */,
+				A1000000000000000000D003 /* GetSmarterUITests */,
+				A10000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A10000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1000000000000000000F001 /* GetSmarter.app */,
+				A1000000000000000000F002 /* GetSmarterTests.xctest */,
+				A1000000000000000000F003 /* GetSmarterUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1000000000000000000A001 /* GetSmarter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1000000000000000000E010 /* Build configuration list for PBXNativeTarget "GetSmarter" */;
+			buildPhases = (
+				A1000000000000000000B010 /* Sources */,
+				A1000000000000000000B011 /* Frameworks */,
+				A1000000000000000000B012 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A1000000000000000000D001 /* GetSmarter */,
+			);
+			name = GetSmarter;
+			productName = GetSmarter;
+			productReference = A1000000000000000000F001 /* GetSmarter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A1000000000000000000A002 /* GetSmarterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1000000000000000000E020 /* Build configuration list for PBXNativeTarget "GetSmarterTests" */;
+			buildPhases = (
+				A1000000000000000000B020 /* Sources */,
+				A1000000000000000000B021 /* Frameworks */,
+				A1000000000000000000B022 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1000000000000000000C011 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A1000000000000000000D002 /* GetSmarterTests */,
+			);
+			name = GetSmarterTests;
+			productName = GetSmarterTests;
+			productReference = A1000000000000000000F002 /* GetSmarterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A1000000000000000000A003 /* GetSmarterUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1000000000000000000E030 /* Build configuration list for PBXNativeTarget "GetSmarterUITests" */;
+			buildPhases = (
+				A1000000000000000000B030 /* Sources */,
+				A1000000000000000000B031 /* Frameworks */,
+				A1000000000000000000B032 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1000000000000000000C012 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A1000000000000000000D003 /* GetSmarterUITests */,
+			);
+			name = GetSmarterUITests;
+			productName = GetSmarterUITests;
+			productReference = A1000000000000000000F003 /* GetSmarterUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A10000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2700;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					A1000000000000000000A001 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+					A1000000000000000000A002 = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = A1000000000000000000A001;
+					};
+					A1000000000000000000A003 = {
+						CreatedOnToolsVersion = 27.0;
+						TestTargetID = A1000000000000000000A001;
+					};
+				};
+			};
+			buildConfigurationList = A1000000000000000000E001 /* Build configuration list for PBXProject "GetSmarter" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A10000000000000000000002;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A10000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1000000000000000000A001 /* GetSmarter */,
+				A1000000000000000000A002 /* GetSmarterTests */,
+				A1000000000000000000A003 /* GetSmarterUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1000000000000000000B012 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1000000000000000000B022 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1000000000000000000B032 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1000000000000000000B010 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1000000000000000000B020 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1000000000000000000B030 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A1000000000000000000C011 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1000000000000000000A001 /* GetSmarter */;
+			targetProxy = A1000000000000000000C001 /* PBXContainerItemProxy */;
+		};
+		A1000000000000000000C012 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1000000000000000000A001 /* GetSmarter */;
+			targetProxy = A1000000000000000000C002 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A1000000000000000000E002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		A1000000000000000000E003 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 6.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A1000000000000000000E011 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Config/GetSmarter.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Config/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Get Smarter";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajaymathur.memorisegetsmatter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A1000000000000000000E012 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Config/GetSmarter.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Config/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Get Smarter";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajaymathur.memorisegetsmatter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A1000000000000000000E021 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajaymathur.memorisegetsmatter.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GetSmarter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GetSmarter";
+			};
+			name = Debug;
+		};
+		A1000000000000000000E022 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajaymathur.memorisegetsmatter.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GetSmarter.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GetSmarter";
+			};
+			name = Release;
+		};
+		A1000000000000000000E031 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajaymathur.memorisegetsmatter.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
+				TEST_TARGET_NAME = GetSmarter;
+			};
+			name = Debug;
+		};
+		A1000000000000000000E032 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ajaymathur.memorisegetsmatter.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
+				TEST_TARGET_NAME = GetSmarter;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1000000000000000000E001 /* Build configuration list for PBXProject "GetSmarter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1000000000000000000E002 /* Debug */,
+				A1000000000000000000E003 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1000000000000000000E010 /* Build configuration list for PBXNativeTarget "GetSmarter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1000000000000000000E011 /* Debug */,
+				A1000000000000000000E012 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1000000000000000000E020 /* Build configuration list for PBXNativeTarget "GetSmarterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1000000000000000000E021 /* Debug */,
+				A1000000000000000000E022 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1000000000000000000E030 /* Build configuration list for PBXNativeTarget "GetSmarterUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1000000000000000000E031 /* Debug */,
+				A1000000000000000000E032 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A10000000000000000000001 /* Project object */;
+}
