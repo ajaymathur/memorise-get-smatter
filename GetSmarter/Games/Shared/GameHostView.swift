@@ -99,7 +99,10 @@ struct GameHostView<Engine: GameEngine, Board: View>: View {
     @State private var phase = Phase.intro
     @State private var mode = SessionMode.ranked
     @State private var run = 0
+    @State private var askToShare = false
+    @State private var lastRecord: SessionRecord?
     @AppStorage(SettingsKey.relaxedTiming) private var relaxedTiming = false
+    @AppStorage(SettingsKey.shareScores) private var shareScores = ShareChoice.notAsked.rawValue
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
 
@@ -121,6 +124,16 @@ struct GameHostView<Engine: GameEngine, Board: View>: View {
         }
         .navigationTitle(Text(game.title))
         .navigationBarTitleDisplayMode(.inline)
+        .alert("Share your scores on global leaderboards?", isPresented: $askToShare) {
+            Button("Share") {
+                shareScores = ShareChoice.share.rawValue
+                lastRecord?.pendingSubmit = true
+                GameCenterService.shared.sync(context)
+            }
+            Button("Keep private", role: .cancel) { shareScores = ShareChoice.keepPrivate.rawValue }
+        } message: {
+            Text("Other players will see your Game Center nickname and best scores. You can change this in Settings.")
+        }
     }
 
     private func start() {
@@ -139,10 +152,18 @@ struct GameHostView<Engine: GameEngine, Board: View>: View {
                     predicate: #Predicate { $0.game == id && $0.tier == tierID && $0.mode != "training" })))?
             .map(\.score).max()
         let best = outcome.score > 0 && outcome.score > (previous ?? 0)
-        context.insert(
-            SessionRecord(game: game, tier: tier, mode: mode, score: outcome.score, accuracy: outcome.accuracy))
+        let record = SessionRecord(game: game, tier: tier, mode: mode, score: outcome.score, accuracy: outcome.accuracy)
+        // Only ranked games from players who opted in are ever submitted (REQ-GC-03).
+        record.pendingSubmit = mode == .ranked && shareScores == ShareChoice.share.rawValue
+        context.insert(record)
         try? context.save()
+        lastRecord = record
         if best { SoundPlayer.shared.play(.personalBest) }
         phase = .result(outcome, best: best)
+        let gameCenter = GameCenterService.shared
+        gameCenter.sync(context, latest: .init(game: game, tier: tier, outcome: outcome))
+        if mode == .ranked, gameCenter.isAuthenticated, shareScores == ShareChoice.notAsked.rawValue {
+            askToShare = true  // one-time opt-in (REQ-GC-02)
+        }
     }
 }
