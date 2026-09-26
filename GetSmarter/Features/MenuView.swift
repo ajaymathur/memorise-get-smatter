@@ -4,6 +4,7 @@ import SwiftUI
 enum Route: Hashable {
     case game(GameKind)
     case play(GameKind, Tier)
+    case training
     case settings
 }
 
@@ -13,6 +14,11 @@ struct MenuView: View {
     var body: some View {
         NavigationStack(path: $path) {
             List {
+                Section {
+                    NavigationLink(value: Route.training) {
+                        TrainingRow()
+                    }
+                }
                 Section {
                     ForEach(GameKind.allCases) { game in
                         NavigationLink(value: Route.game(game)) {
@@ -35,10 +41,38 @@ struct MenuView: View {
                 switch route {
                 case .game(let game): GameDetailView(game: game)
                 case .play(let game, let tier): GameScreen(game: game, tier: tier)
+                case .training: DailyTrainingView()
                 case .settings: SettingsView()
                 }
             }
         }
+    }
+}
+
+private struct TrainingRow: View {
+    @Query(filter: #Predicate<SessionRecord> { $0.circuitComplete }) private var circuits: [SessionRecord]
+
+    var body: some View {
+        let streak = Progression.streak(circuitDates: circuits.map(\.date))
+        HStack(spacing: 16) {
+            Image(systemName: "figure.mind.and.body")
+                .font(.title2)
+                .foregroundStyle(.white)
+                .frame(width: 48, height: 48)
+                .background(Color.accentColor.gradient, in: .rect(cornerRadius: 12))
+                .accessibilityHidden(true)
+            VStack(alignment: .leading) {
+                Text("Daily Training").font(.headline)
+                Text("5 minutes · adapts to you").font(.subheadline).foregroundStyle(.secondary)
+            }
+            Spacer()
+            if streak > 0 {
+                Label("\(streak)", systemImage: "flame.fill")
+                    .foregroundStyle(.orange)
+                    .accessibilityLabel(Text("\(streak) day streak"))
+            }
+        }
+        .padding(.vertical, 4)
     }
 }
 

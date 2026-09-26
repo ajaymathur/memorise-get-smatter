@@ -67,3 +67,14 @@ extension GameFlowTests {
         XCTAssertTrue(app.staticTexts["Score"].waitForExistence(timeout: 3))
     }
 }
+
+extension GameFlowTests {
+    @MainActor
+    func testDailyTrainingStartsWithPairMatch() {
+        let app = launch()
+        app.staticTexts["Daily Training"].tap()
+        app.buttons["Start training"].tap()
+        XCTAssertTrue(app.staticTexts["Level 4"].waitForExistence(timeout: 3))
+        XCTAssertTrue(app.buttons["Pause"].exists)
+    }
+}
