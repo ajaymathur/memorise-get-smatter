@@ -16,6 +16,8 @@ scripts/check-no-network.sh
 xcrun swift-format lint --strict --recursive GetSmarter GetSmarterTests GetSmarterUITests
 ```
 
+After cloning: `git config core.hooksPath .githooks` (pre-commit runs the gates).
+
 ## Hard rules
 
 - **No network code.** Never use URLSession, Network, WebKit, SFSafariViewController, or URL literals outside `GetSmarter/Services/Links.swift`. Only GameKit and SwiftData/CloudKit may talk to the network.
