@@ -1,5 +1,5 @@
 /// SplitMix64: tiny, fast, deterministic. Engines take one so tests can pin boards (REQ-GM-02).
-struct SeededRNG: RandomNumberGenerator, Sendable {
+nonisolated struct SeededRNG: RandomNumberGenerator, Sendable {
     private var state: UInt64
 
     init(seed: UInt64) { state = seed }

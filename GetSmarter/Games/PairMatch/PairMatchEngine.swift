@@ -140,7 +140,7 @@ struct PairMatchEngine: GameEngine {
         let accuracy = moves == 0 ? 0 : Double(pairsFound) / Double(moves)
         outcome = Outcome(
             score: score, accuracy: accuracy,
-            stats: ["extraMoves": extraMoves, "completed": completed ? 1 : 0])
+            stats: ["extraMoves": extraMoves, "completed": completed ? 1 : 0, "pairs": config.pairs])
         return [.sound(.finish)]
     }
 }

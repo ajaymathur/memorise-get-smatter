@@ -61,7 +61,7 @@ struct PairMatchTests {
             _ = e.advance(by: .seconds(1))
         }
         // Last pair found after 14 s → 1500 + 76 s × 5.
-        #expect(e.outcome == Outcome(score: 1880, accuracy: 1, stats: ["extraMoves": 0, "completed": 1]))
+        #expect(e.outcome == Outcome(score: 1880, accuracy: 1, stats: ["extraMoves": 0, "completed": 1, "pairs": 15]))
     }
 
     @Test func timeoutScoresFoundPairsOnly() {
