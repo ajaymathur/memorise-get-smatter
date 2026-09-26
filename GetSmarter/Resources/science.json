@@ -1,0 +1,53 @@
+{
+ "evidenceNote": "Practising these tasks reliably improves performance on them. Evidence that such practice improves memory or intelligence in everyday life is mixed. This app is for entertainment and education, not medical use.",
+ "games": {
+  "pairmatch": {
+   "skill": "Visuospatial short-term memory: holding what you saw and where you saw it.",
+   "paradigm": "Based on the classic concentration (pairs) game and visual pattern-span tasks used in memory research. Working-memory models describe a 'visuospatial sketchpad' that stores this kind of information for a few seconds.",
+   "citations": [
+    "Baddeley, A. D., & Hitch, G. (1974). Working memory. Psychology of Learning and Motivation, 8, 47–89. doi:10.1016/S0079-7421(08)60452-1",
+    "Della Sala, S., Gray, C., Baddeley, A., Allamano, N., & Wilson, L. (1999). Pattern span: A tool for unwelding visuo-spatial memory. Neuropsychologia, 37(10), 1189–1199. doi:10.1016/S0028-3932(98)00159-6"
+   ]
+  },
+  "sequenceecho": {
+   "skill": "Visuospatial working-memory span: remembering the order of locations.",
+   "paradigm": "Based on the Corsi block-tapping task. Span grows by one each time you succeed, with two tries per length. Expert asks for reverse order, which also requires manipulating the sequence, not just holding it.",
+   "citations": [
+    "Corsi, P. M. (1972). Human memory and the medial temporal region of the brain (Doctoral dissertation). McGill University.",
+    "Kessels, R. P. C., van Zandvoort, M. J. E., Postma, A., Kappelle, L. J., & de Haan, E. H. F. (2000). The Corsi block-tapping task: Standardization and normative data. Applied Neuropsychology, 7(4), 252–258. doi:10.1207/S15324826AN0704_8"
+   ]
+  },
+  "nback": {
+   "skill": "Working-memory updating: constantly replacing what you hold in mind.",
+   "paradigm": "Based on the n-back task, one of the most widely used working-memory tasks in psychology and neuroscience. Expert uses the dual version (position and sound at once) with the timing from Jaeggi and colleagues.",
+   "citations": [
+    "Kirchner, W. K. (1958). Age differences in short-term retention of rapidly changing information. Journal of Experimental Psychology, 55(4), 352–358. doi:10.1037/h0043688",
+    "Jaeggi, S. M., Buschkuehl, M., Jonides, J., & Perrig, W. J. (2008). Improving fluid intelligence with training on working memory. PNAS, 105(19), 6829–6833. doi:10.1073/pnas.0801268105",
+    "Owen, A. M., McMillan, K. M., Laird, A. R., & Bullmore, E. (2005). N-back working memory paradigm: A meta-analysis of normative functional neuroimaging studies. Human Brain Mapping, 25(1), 46–59. doi:10.1002/hbm.20131"
+   ]
+  },
+  "wordrecall": {
+   "skill": "Episodic memory and retrieval: recognising what you actually studied.",
+   "paradigm": "Testing yourself on material (retrieval practice) helps you remember that material later, one of the best-replicated findings in memory research. Advanced and Expert add related words you never saw, based on the DRM false-memory paradigm. Expert adds a short counting task first, as in the Brown–Peterson studies of forgetting.",
+   "citations": [
+    "Roediger, H. L., & Karpicke, J. D. (2006). Test-enhanced learning: Taking memory tests improves long-term retention. Psychological Science, 17(3), 249–255. doi:10.1111/j.1467-9280.2006.01693.x",
+    "Roediger, H. L., & McDermott, K. B. (1995). Creating false memories: Remembering words not presented in lists. Journal of Experimental Psychology: Learning, Memory, and Cognition, 21(4), 803–814. doi:10.1037/0278-7393.21.4.803",
+    "Brown, J. (1958). Some tests of the decay theory of immediate memory. Quarterly Journal of Experimental Psychology, 10(1), 12–21. doi:10.1080/17470215808416249",
+    "Peterson, L. R., & Peterson, M. J. (1959). Short-term retention of individual verbal items. Journal of Experimental Psychology, 58(3), 193–198. doi:10.1037/h0049234"
+   ]
+  }
+ },
+ "training": {
+  "skill": "Adaptive difficulty keeps practice challenging but achievable.",
+  "paradigm": "Daily Training uses a 2-down/1-up staircase: two successes in a row raise the level, one miss lowers it, settling where you succeed about 70% of the time.",
+  "citations": [
+   "Levitt, H. (1971). Transformed up-down methods in psychoacoustics. Journal of the Acoustical Society of America, 49(2B), 467–477. doi:10.1121/1.1912375",
+   "Klingberg, T. (2010). Training and plasticity of working memory. Trends in Cognitive Sciences, 14(7), 317–324. doi:10.1016/j.tics.2010.05.002"
+  ]
+ },
+ "evidence": [
+  "Melby-Lervåg, M., & Hulme, C. (2013). Is working memory training effective? A meta-analytic review. Developmental Psychology, 49(2), 270–291. doi:10.1037/a0028228",
+  "Simons, D. J., Boot, W. R., Charness, N., Gathercole, S. E., Chabris, C. F., Hambrick, D. Z., & Stine-Morrow, E. A. L. (2016). Do \"brain-training\" programs work? Psychological Science in the Public Interest, 17(3), 103–186. doi:10.1177/1529100616661983",
+  "Snodgrass, J. G., & Corwin, J. (1988). Pragmatics of measuring recognition memory: Applications to dementia and amnesia. Journal of Experimental Psychology: General, 117(1), 34–50. doi:10.1037/0096-3445.117.1.34"
+ ]
+}
