@@ -9,6 +9,7 @@ struct GetSmarterApp: App {
     private let isUnitTest = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
     private let container: ModelContainer
     @Environment(\.scenePhase) private var scenePhase
+    @AppStorage(SettingsKey.onboarded) private var onboarded = false
 
     init() {
         container = .app(inMemory: isUITest || isUnitTest)
@@ -22,8 +23,8 @@ struct GetSmarterApp: App {
         WindowGroup {
             if !isUnitTest {
                 MenuView()
-                    .onAppear {
-                        guard !isUITest else { return }
+                    .onChange(of: onboarded, initial: true) {
+                        guard onboarded, !isUITest else { return }
                         GameCenterService.shared.authenticate { GameCenterService.shared.sync(container.mainContext) }
                     }
                     .onChange(of: scenePhase) {

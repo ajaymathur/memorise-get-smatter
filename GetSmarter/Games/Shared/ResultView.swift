@@ -1,3 +1,4 @@
+import StoreKit
 import SwiftData
 import SwiftUI
 
@@ -11,6 +12,8 @@ struct ResultView: View {
     let done: () -> Void
 
     @Query private var records: [SessionRecord]
+    @Environment(\.requestReview) private var requestReview
+    @AppStorage(SettingsKey.lastReviewRequest) private var lastReviewRequest = 0.0
 
     init(
         game: GameKind, tier: Tier, mode: SessionMode, outcome: Outcome, isPersonalBest: Bool,
@@ -65,6 +68,13 @@ struct ResultView: View {
             .padding()
             .frame(maxWidth: 500)
             .frame(maxWidth: .infinity)
+        }
+        .task {
+            let now = Date.now.timeIntervalSince1970
+            guard isPersonalBest, now - lastReviewRequest > 30 * 86_400 else { return }
+            try? await Task.sleep(for: .seconds(1.5))
+            lastReviewRequest = now
+            requestReview()
         }
     }
 }

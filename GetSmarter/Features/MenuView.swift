@@ -6,11 +6,14 @@ enum Route: Hashable {
     case play(GameKind, Tier)
     case training
     case leaderboards
+    case progress
+    case science(GameKind?)
     case settings
 }
 
 struct MenuView: View {
     @State private var path: [Route] = []
+    @AppStorage(SettingsKey.onboarded) private var onboarded = false
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -29,15 +32,20 @@ struct MenuView: View {
                 } header: {
                     Text("Games")
                 }
+                Section {
+                    NavigationLink(value: Route.progress) { Label("Progress", systemImage: "chart.xyaxis.line") }
+                    NavigationLink(value: Route.leaderboards) { Label("Leaderboards", systemImage: "trophy") }
+                    NavigationLink(value: Route.science(nil)) { Label("The Science", systemImage: "books.vertical") }
+                } header: {
+                    Text("You")
+                }
             }
             .navigationTitle("Get Smarter")
             .onChange(of: path.isEmpty, initial: true) { GameCenterService.shared.showAccessPoint(path.isEmpty) }
+            .fullScreenCover(isPresented: .constant(!onboarded)) {
+                OnboardingView { onboarded = true }
+            }
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink(value: Route.leaderboards) {
-                        Label("Leaderboards", systemImage: "trophy")
-                    }
-                }
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink(value: Route.settings) {
                         Label("Settings", systemImage: "gearshape")
@@ -50,6 +58,8 @@ struct MenuView: View {
                 case .play(let game, let tier): GameScreen(game: game, tier: tier)
                 case .training: DailyTrainingView()
                 case .leaderboards: LeaderboardView()
+                case .progress: StatsView()
+                case .science(let game): ScienceView(game: game)
                 case .settings: SettingsView()
                 }
             }
@@ -154,5 +164,10 @@ struct GameDetailView: View {
             }
         }
         .navigationTitle(Text(game.title))
+        .toolbar {
+            NavigationLink(value: Route.science(game)) {
+                Label("The Science", systemImage: "info.circle")
+            }
+        }
     }
 }
