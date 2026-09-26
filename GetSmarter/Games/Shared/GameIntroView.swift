@@ -19,7 +19,10 @@ struct GameIntroView: View {
     let game: GameKind
     let tier: Tier
     let relaxed: Bool
+    let tutorialSeen: Bool
+    let practice: () -> Void
     let start: () -> Void
+    @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
 
     var body: some View {
         ScrollView {
@@ -36,15 +39,29 @@ struct GameIntroView: View {
                 }
                 Text(game.howToPlay)
                     .multilineTextAlignment(.center)
+                if voiceOver && !relaxed {
+                    Label("Tip: turn on Relaxed timing in Settings for more time.", systemImage: "tortoise")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
                 if relaxed {
                     Label("Relaxed timing is on. This game won't be posted to leaderboards.", systemImage: "tortoise")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
-                Button(action: start) {
-                    Text("Start").frame(maxWidth: .infinity)
+                VStack(spacing: 12) {
+                    if tutorialSeen {
+                        Button(action: start) { Text("Start").frame(maxWidth: .infinity) }
+                            .buttonStyle(.borderedProminent)
+                        Button(action: practice) { Text("Practice round").frame(maxWidth: .infinity) }
+                            .buttonStyle(.bordered)
+                    } else {
+                        Button(action: practice) { Text("Try a practice round").frame(maxWidth: .infinity) }
+                            .buttonStyle(.borderedProminent)
+                        Button(action: start) { Text("Skip to game").frame(maxWidth: .infinity) }
+                            .buttonStyle(.bordered)
+                    }
                 }
-                .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .tint(game.color)
             }
