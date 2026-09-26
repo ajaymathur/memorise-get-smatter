@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select newest Xcode
+        run: sudo xcode-select -s "$(ls -d /Applications/Xcode_*.app | sort -V | tail -1)" && xcodebuild -version
+      - name: No-network gate
+        run: scripts/check-no-network.sh
+      - name: Format lint
+        run: xcrun swift-format lint --strict --recursive GetSmarter GetSmarterTests GetSmarterUITests
+      - name: Build and test
+        run: |
+          xcodebuild test -project GetSmarter.xcodeproj -scheme GetSmarter \
+            -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
+            CODE_SIGNING_ALLOWED=NO -quiet
