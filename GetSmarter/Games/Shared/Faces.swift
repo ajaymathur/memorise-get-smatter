@@ -12,10 +12,10 @@ enum Faces {
         ("crown.fill", "Crown"), ("bell.fill", "Bell"), ("key.fill", "Key"),
     ]
 
-    /// Okabe–Ito palette minus black.
+    /// Okabe–Ito palette minus black and yellow (yellow fails contrast on light cards).
     static let colors: [Color] = [
         Color(red: 0.90, green: 0.62, blue: 0.00), Color(red: 0.34, green: 0.71, blue: 0.91),
-        Color(red: 0.00, green: 0.62, blue: 0.45), Color(red: 0.94, green: 0.89, blue: 0.26),
+        Color(red: 0.00, green: 0.62, blue: 0.45),
         Color(red: 0.00, green: 0.45, blue: 0.70), Color(red: 0.84, green: 0.37, blue: 0.00),
         Color(red: 0.80, green: 0.47, blue: 0.65),
     ]

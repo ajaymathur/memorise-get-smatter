@@ -13,9 +13,13 @@ struct StatsView: View {
         List {
             Section {
                 let streak = Progression.streak(circuitDates: records.filter(\.circuitComplete).map(\.date))
-                LabeledContent("Training streak") {
-                    Label("\(streak) days", systemImage: "flame.fill").foregroundStyle(.orange)
+                HStack {
+                    Text("Training streak")
+                    Spacer()
+                    Image(systemName: "flame.fill").foregroundStyle(.orange).accessibilityHidden(true)
+                    Text("\(streak) days").foregroundStyle(.secondary).monospacedDigit()
                 }
+                .accessibilityElement(children: .combine)
                 LabeledContent("Games played", value: records.count, format: .number)
             }
             Section("Personal bests") {
