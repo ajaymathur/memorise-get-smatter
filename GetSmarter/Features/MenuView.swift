@@ -5,6 +5,7 @@ enum Route: Hashable {
     case game(GameKind)
     case play(GameKind, Tier)
     case training
+    case leaderboards
     case settings
 }
 
@@ -30,7 +31,13 @@ struct MenuView: View {
                 }
             }
             .navigationTitle("Get Smarter")
+            .onChange(of: path.isEmpty, initial: true) { GameCenterService.shared.showAccessPoint(path.isEmpty) }
             .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink(value: Route.leaderboards) {
+                        Label("Leaderboards", systemImage: "trophy")
+                    }
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink(value: Route.settings) {
                         Label("Settings", systemImage: "gearshape")
@@ -42,6 +49,7 @@ struct MenuView: View {
                 case .game(let game): GameDetailView(game: game)
                 case .play(let game, let tier): GameScreen(game: game, tier: tier)
                 case .training: DailyTrainingView()
+                case .leaderboards: LeaderboardView()
                 case .settings: SettingsView()
                 }
             }
