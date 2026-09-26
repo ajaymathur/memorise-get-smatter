@@ -5,10 +5,12 @@ import SwiftUI
 struct GetSmarterApp: App {
     /// UI tests pass `-uitest` for a clean in-memory store.
     private let isUITest = ProcessInfo.processInfo.arguments.contains("-uitest")
+    /// Hosting unit tests: skip CloudKit and the UI so tests run against a quiet app.
+    private let isUnitTest = ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
     private let container: ModelContainer
 
     init() {
-        container = .app(inMemory: isUITest)
+        container = .app(inMemory: isUITest || isUnitTest)
         if isUITest, let id = Bundle.main.bundleIdentifier {
             UserDefaults.standard.removePersistentDomain(forName: id)
         }
@@ -17,7 +19,9 @@ struct GetSmarterApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MenuView()
+            if !isUnitTest {
+                MenuView()
+            }
         }
         .modelContainer(container)
     }
