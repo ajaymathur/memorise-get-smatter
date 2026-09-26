@@ -1,0 +1,410 @@
+{
+ "leaderboards": [
+  {
+   "id": "lb.pairmatch.beginner.alltime",
+   "type": "classic",
+   "name": "Pair Match · Beginner",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ]
+  },
+  {
+   "id": "lb.pairmatch.beginner.weekly",
+   "type": "recurring",
+   "name": "Pair Match · Beginner (Weekly)",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ],
+   "start": "Monday 00:00 UTC",
+   "duration": "7 days",
+   "restart": "weekly"
+  },
+  {
+   "id": "lb.pairmatch.advanced.alltime",
+   "type": "classic",
+   "name": "Pair Match · Advanced",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ]
+  },
+  {
+   "id": "lb.pairmatch.advanced.weekly",
+   "type": "recurring",
+   "name": "Pair Match · Advanced (Weekly)",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ],
+   "start": "Monday 00:00 UTC",
+   "duration": "7 days",
+   "restart": "weekly"
+  },
+  {
+   "id": "lb.pairmatch.expert.alltime",
+   "type": "classic",
+   "name": "Pair Match · Expert",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ]
+  },
+  {
+   "id": "lb.pairmatch.expert.weekly",
+   "type": "recurring",
+   "name": "Pair Match · Expert (Weekly)",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ],
+   "start": "Monday 00:00 UTC",
+   "duration": "7 days",
+   "restart": "weekly"
+  },
+  {
+   "id": "lb.sequenceecho.beginner.alltime",
+   "type": "classic",
+   "name": "Sequence Echo · Beginner",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ]
+  },
+  {
+   "id": "lb.sequenceecho.beginner.weekly",
+   "type": "recurring",
+   "name": "Sequence Echo · Beginner (Weekly)",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ],
+   "start": "Monday 00:00 UTC",
+   "duration": "7 days",
+   "restart": "weekly"
+  },
+  {
+   "id": "lb.sequenceecho.advanced.alltime",
+   "type": "classic",
+   "name": "Sequence Echo · Advanced",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ]
+  },
+  {
+   "id": "lb.sequenceecho.advanced.weekly",
+   "type": "recurring",
+   "name": "Sequence Echo · Advanced (Weekly)",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ],
+   "start": "Monday 00:00 UTC",
+   "duration": "7 days",
+   "restart": "weekly"
+  },
+  {
+   "id": "lb.sequenceecho.expert.alltime",
+   "type": "classic",
+   "name": "Sequence Echo · Expert",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ]
+  },
+  {
+   "id": "lb.sequenceecho.expert.weekly",
+   "type": "recurring",
+   "name": "Sequence Echo · Expert (Weekly)",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ],
+   "start": "Monday 00:00 UTC",
+   "duration": "7 days",
+   "restart": "weekly"
+  },
+  {
+   "id": "lb.nback.beginner.alltime",
+   "type": "classic",
+   "name": "N-Back · Beginner",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ]
+  },
+  {
+   "id": "lb.nback.beginner.weekly",
+   "type": "recurring",
+   "name": "N-Back · Beginner (Weekly)",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ],
+   "start": "Monday 00:00 UTC",
+   "duration": "7 days",
+   "restart": "weekly"
+  },
+  {
+   "id": "lb.nback.advanced.alltime",
+   "type": "classic",
+   "name": "N-Back · Advanced",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ]
+  },
+  {
+   "id": "lb.nback.advanced.weekly",
+   "type": "recurring",
+   "name": "N-Back · Advanced (Weekly)",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ],
+   "start": "Monday 00:00 UTC",
+   "duration": "7 days",
+   "restart": "weekly"
+  },
+  {
+   "id": "lb.nback.expert.alltime",
+   "type": "classic",
+   "name": "N-Back · Expert",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ]
+  },
+  {
+   "id": "lb.nback.expert.weekly",
+   "type": "recurring",
+   "name": "N-Back · Expert (Weekly)",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ],
+   "start": "Monday 00:00 UTC",
+   "duration": "7 days",
+   "restart": "weekly"
+  },
+  {
+   "id": "lb.wordrecall.beginner.alltime",
+   "type": "classic",
+   "name": "Word Recall · Beginner",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ]
+  },
+  {
+   "id": "lb.wordrecall.beginner.weekly",
+   "type": "recurring",
+   "name": "Word Recall · Beginner (Weekly)",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ],
+   "start": "Monday 00:00 UTC",
+   "duration": "7 days",
+   "restart": "weekly"
+  },
+  {
+   "id": "lb.wordrecall.advanced.alltime",
+   "type": "classic",
+   "name": "Word Recall · Advanced",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ]
+  },
+  {
+   "id": "lb.wordrecall.advanced.weekly",
+   "type": "recurring",
+   "name": "Word Recall · Advanced (Weekly)",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ],
+   "start": "Monday 00:00 UTC",
+   "duration": "7 days",
+   "restart": "weekly"
+  },
+  {
+   "id": "lb.wordrecall.expert.alltime",
+   "type": "classic",
+   "name": "Word Recall · Expert",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ]
+  },
+  {
+   "id": "lb.wordrecall.expert.weekly",
+   "type": "recurring",
+   "name": "Word Recall · Expert (Weekly)",
+   "sort": "high-to-low",
+   "submission": "best",
+   "format": "integer",
+   "range": [
+    0,
+    5000
+   ],
+   "start": "Monday 00:00 UTC",
+   "duration": "7 days",
+   "restart": "weekly"
+  }
+ ],
+ "achievements": [
+  {
+   "id": "ach.first_game",
+   "title": "First Steps",
+   "description": "Finish any game.",
+   "points": 10,
+   "hidden": false,
+   "achievable_more_than_once": false
+  },
+  {
+   "id": "ach.all_games",
+   "title": "Well Rounded",
+   "description": "Finish all four games.",
+   "points": 20,
+   "hidden": false,
+   "achievable_more_than_once": false
+  },
+  {
+   "id": "ach.perfect_pairs",
+   "title": "Photographic",
+   "description": "Clear Pair Match without a single wasted move.",
+   "points": 40,
+   "hidden": false,
+   "achievable_more_than_once": false
+  },
+  {
+   "id": "ach.span_7",
+   "title": "Magic Seven",
+   "description": "Reach a span of 7 in Sequence Echo.",
+   "points": 50,
+   "hidden": false,
+   "achievable_more_than_once": false
+  },
+  {
+   "id": "ach.nback_3",
+   "title": "Three Steps Back",
+   "description": "Reach level 3 in N-Back Daily Training.",
+   "points": 50,
+   "hidden": false,
+   "achievable_more_than_once": false
+  },
+  {
+   "id": "ach.lure_proof",
+   "title": "Lure Proof",
+   "description": "Finish Word Recall on Advanced or Expert without picking a lure.",
+   "points": 40,
+   "hidden": false,
+   "achievable_more_than_once": false
+  },
+  {
+   "id": "ach.expert",
+   "title": "Expert Mind",
+   "description": "Unlock any Expert level.",
+   "points": 40,
+   "hidden": false,
+   "achievable_more_than_once": false
+  },
+  {
+   "id": "ach.streak_3",
+   "title": "Warming Up",
+   "description": "Complete Daily Training 3 days in a row.",
+   "points": 20,
+   "hidden": false,
+   "achievable_more_than_once": false
+  },
+  {
+   "id": "ach.streak_7",
+   "title": "Habit Formed",
+   "description": "Complete Daily Training 7 days in a row.",
+   "points": 50,
+   "hidden": false,
+   "achievable_more_than_once": false
+  },
+  {
+   "id": "ach.streak_30",
+   "title": "Dedicated",
+   "description": "Complete Daily Training 30 days in a row.",
+   "points": 100,
+   "hidden": false,
+   "achievable_more_than_once": false
+  }
+ ]
+}
