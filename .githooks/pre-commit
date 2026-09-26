@@ -1,0 +1,4 @@
+#!/bin/sh
+scripts/check-no-network.sh || exit 1
+files=$(git diff --cached --name-only --diff-filter=ACM -- '*.swift')
+[ -z "$files" ] || xcrun swift-format lint --strict $files || exit 1
