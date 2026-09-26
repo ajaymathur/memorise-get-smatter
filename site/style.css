@@ -1,0 +1,21 @@
+:root {
+  --bg: #f5f3ff; --fg: #1d1b2e; --muted: #5b5873; --accent: #4b3fb5; --card: #ffffff;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #12101f; --fg: #eeeaff; --muted: #a9a4c7; --accent: #8e84f0; --card: #1c1930; }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+}
+main { max-width: 720px; margin: 0 auto; padding: 48px 16px 64px; }
+h1 { font: 700 2.2rem/1.2 ui-rounded, -apple-system, system-ui, sans-serif; margin: 0 0 8px; }
+h2 { margin-top: 2em; font-size: 1.25rem; }
+a { color: var(--accent); }
+.muted { color: var(--muted); }
+.card { background: var(--card); border-radius: 16px; padding: 20px; margin: 16px 0; }
+.games { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.games div { background: var(--card); border-radius: 14px; padding: 14px; border-top: 6px solid var(--c); }
+nav { display: flex; gap: 16px; margin-top: 32px; font-size: 0.95rem; }
